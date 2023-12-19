@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<VBox alignment="TOP_CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alertsystem.controller.ChannelCreateController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <CheckBox text="SMS" fx:id="smsCheckBox"/>
+        <CheckBox text="App Notification" fx:id="appNotificationCheckBox"/>
+        <CheckBox text="E-Mail" fx:id="emailCheckBox"/>
+        <CheckBox text="App Inbox" fx:id="appInboxCheckBox"/>
+    </HBox>
+
+    <ComboBox fx:id="listComboBox" prefWidth="150">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="List 1"/>
+                <String fx:value="List 2"/>
+                <String fx:value="List 3"/>
+                <String fx:value="List 4"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Create List" onAction="#handleCreateList"/>
+        <Button text="Edit List" onAction="#handleEditList"/>
+    </HBox>
+
+    <Button text="Return to Main Screen" onAction="#returnToMainScreen"/>
+
+</VBox>

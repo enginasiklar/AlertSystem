@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alertsystem.controller.AlertCreateController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <HBox spacing="5" alignment="CENTER_LEFT">
+        <ComboBox fx:id="comboBoxCriteria" value="Price">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Price"/>
+                    <String fx:value="News"/>
+                    <String fx:value="General Market"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <ComboBox fx:id="comboBoxSymbols" value="$AAPL">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="$AAPL"/>
+                    <String fx:value="$GOOG"/>
+                    <String fx:value="$MSFT"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <ComboBox fx:id="comboBoxCondition" value="is up">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="is up"/>
+                    <String fx:value="is down"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <TextField fx:id="textFieldValue" text="10" prefWidth="50"/>
+        <ComboBox fx:id="comboBoxPercentageDollar">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="%"/>
+                    <String fx:value="$"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+    <Button text="Add Condition" fx:id="btnAddCondition"/>
+    <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="When (" />
+        <ComboBox fx:id="comboBoxWhen" value="Rule 1">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Rule 1"/>
+                    <String fx:value="Rule 2"/>
+                    <String fx:value="Rule 3"/>
+                    <String fx:value="Rule 4"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <ComboBox fx:id="comboBoxLogic" value="AND">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="AND"/>
+                    <String fx:value="OR"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <ComboBox fx:id="comboBoxWhen2" value="Rule 1">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Rule 1"/>
+                    <String fx:value="Rule 2"/>
+                    <String fx:value="Rule 3"/>
+                    <String fx:value="Rule 4"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Button text="+" />
+        <Label text=") meets the conditions." />
+    </HBox>
+    <HBox spacing="5" alignment="CENTER_LEFT">
+        <Label text="Send" />
+        <ComboBox fx:id="comboBoxList" value="List 1">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="List 1"/>
+                    <String fx:value="List 2"/>
+                    <String fx:value="List 3"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label text="via" />
+        <ComboBox fx:id="comboBoxChannel" value="Channel List 1">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Channel List 1"/>
+                    <String fx:value="Channel List 2"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+    <Button fx:id="createAlertButton" text="Create Alert" onAction="#createAlert"/>
+    <Button text="Return to Main Screen" onAction="#returnToMainScreen"/>
+</VBox>

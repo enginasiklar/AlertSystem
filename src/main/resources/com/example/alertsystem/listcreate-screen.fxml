@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox alignment="TOP_CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alertsystem.controller.ListCreateController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="5" alignment="CENTER_LEFT">
+        <ComboBox fx:id="typeComboBox">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Holders"/>
+                    <String fx:value="Followers"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label text="of"/>
+        <ComboBox fx:id="symbolComboBox">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="$AAPL"/>
+                    <!-- Add more symbols as needed -->
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Label text="with"/>
+        <ComboBox fx:id="conditionComboBox">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="&gt;"/>
+                    <String fx:value="&lt;"/>
+                    <String fx:value="="/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <TextField fx:id="valueTextField" text="10.000" prefWidth="70"/>
+        <ComboBox fx:id="unitComboBox">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="$"/>
+                    <!-- Add more units as needed -->
+                </FXCollections>
+            </items>
+        </ComboBox>
+    </HBox>
+
+    <ComboBox fx:id="listComboBox" prefWidth="150">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="List 1"/>
+                <String fx:value="List 2"/>
+                <String fx:value="List 3"/>
+                <String fx:value="List 4"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Create List" onAction="#handleCreateList"/>
+        <Button text="Edit List" onAction="#handleEditList"/>
+    </HBox>
+    <Button text="Return to Main Screen" onAction="#returnToMainScreen"/>
+</VBox>

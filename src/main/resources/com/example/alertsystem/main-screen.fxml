@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alertsystem.controller.MainScreenController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+
+    <!-- Top row for creation buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Create Alert" fx:id="createAlertButton" onAction="#createAlert"/>
+        <Button text="Create List" fx:id="createListButton" onAction="#createList"/>
+        <Button text="Create Channel" fx:id="createChannelButton" onAction="#createChannel"/>
+    </HBox>
+
+    <!-- Bottom row for viewing buttons -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="View Alerts" fx:id="viewAlertsButton" onAction="#viewAlerts"/>
+        <Button text="View Lists" fx:id="viewListsButton" onAction="#viewLists"/>
+        <Button text="View Channels" fx:id="viewChannelsButton" onAction="#viewChannels"/>
+    </HBox>
+</VBox>
+
+
