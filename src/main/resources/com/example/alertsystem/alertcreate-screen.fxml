@@ -53,35 +53,7 @@
     <Button text="Add Condition" fx:id="btnAddCondition"/>
     <HBox spacing="5" alignment="CENTER_LEFT">
         <Label text="When (" />
-        <ComboBox fx:id="comboBoxWhen" value="Rule 1">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Rule 1"/>
-                    <String fx:value="Rule 2"/>
-                    <String fx:value="Rule 3"/>
-                    <String fx:value="Rule 4"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
-        <ComboBox fx:id="comboBoxLogic" value="AND">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="AND"/>
-                    <String fx:value="OR"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
-        <ComboBox fx:id="comboBoxWhen2" value="Rule 1">
-            <items>
-                <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="Rule 1"/>
-                    <String fx:value="Rule 2"/>
-                    <String fx:value="Rule 3"/>
-                    <String fx:value="Rule 4"/>
-                </FXCollections>
-            </items>
-        </ComboBox>
-        <Button text="+" />
+        <fx:include source="alert-logic-component.fxml"/>
         <Label text=") meets the conditions." />
     </HBox>
     <HBox spacing="5" alignment="CENTER_LEFT">

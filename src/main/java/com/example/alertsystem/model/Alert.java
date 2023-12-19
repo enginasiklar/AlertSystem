@@ -24,5 +24,4 @@ public class Alert {
         return expression.toString().trim();
     }
 
-    // Additional methods as needed...
 }

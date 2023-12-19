@@ -11,7 +11,11 @@ public class ConditionComponent implements AlertComponent {
 
     @Override
     public String display() {
-        // Example: convert the condition to a readable string
-        return "RULE" + condition.toString();
+        // Display the condition as "Condition[id]"
+        return "Condition[" + condition.id + "]";
+    }
+
+    public Condition getCondition() {
+        return condition;
     }
 }
