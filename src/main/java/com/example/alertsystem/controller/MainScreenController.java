@@ -28,7 +28,9 @@ public class MainScreenController {
             AlertLogicComponentController alertLogicComponentController = new AlertLogicComponentController();
             alertCreateController.setAlertLogicComponentController(alertLogicComponentController);
 
-            Scene alertCreationScene = new Scene(alertCreationScreen);
+            // Create a larger Scene by setting width and height
+            Scene alertCreationScene = new Scene(alertCreationScreen, 1000, 300); // Adjust the dimensions as needed
+
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.setScene(alertCreationScene);
             currentStage.show();
@@ -36,6 +38,7 @@ public class MainScreenController {
             e.printStackTrace();
         }
     }
+
 
     @FXML
     private void createList(ActionEvent event) {

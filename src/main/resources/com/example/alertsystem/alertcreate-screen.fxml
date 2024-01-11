@@ -9,10 +9,15 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.collections.FXCollections?>
 <?import java.lang.String?>
+<?import javafx.scene.text.Text?>
 <VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.alertsystem.controller.AlertCreateController">
     <padding>
         <Insets top="10" right="10" bottom="10" left="10"/>
     </padding>
+    <!-- Add this to your FXML file -->
+    <Text fx:id="alertText" />
+
+    <!-- Top Section -->
     <HBox spacing="5" alignment="CENTER_LEFT">
         <ComboBox fx:id="comboBoxCriteria" value="Price">
             <items>
@@ -26,9 +31,9 @@
         <ComboBox fx:id="comboBoxSymbols" value="$AAPL">
             <items>
                 <FXCollections fx:factory="observableArrayList">
-                    <String fx:value="$AAPL"/>
-                    <String fx:value="$GOOG"/>
-                    <String fx:value="$MSFT"/>
+                    <String fx:value="BTC"/>
+                    <String fx:value="ETH"/>
+                    <String fx:value="DOGE"/>
                 </FXCollections>
             </items>
         </ComboBox>
@@ -49,13 +54,17 @@
                 </FXCollections>
             </items>
         </ComboBox>
+        <Button text="Add Condition" fx:id="btnAddCondition" onAction="#handleAddConditionAction"/>
     </HBox>
-    <Button text="Add Condition" fx:id="btnAddCondition"/>
+
+    <!-- Middle Section -->
     <HBox spacing="5" alignment="CENTER_LEFT">
         <Label text="When (" />
         <fx:include source="alert-logic-component.fxml"/>
         <Label text=") meets the conditions." />
     </HBox>
+
+    <!-- Bottom Section -->
     <HBox spacing="5" alignment="CENTER_LEFT">
         <Label text="Send" />
         <ComboBox fx:id="comboBoxList" value="List 1">
@@ -77,6 +86,10 @@
             </items>
         </ComboBox>
     </HBox>
-    <Button fx:id="createAlertButton" text="Create Alert" onAction="#createAlert"/>
-    <Button text="Return to Main Screen" onAction="#returnToMainScreen"/>
+
+    <!-- Buttons at the Bottom -->
+    <HBox spacing="10" alignment="CENTER">
+        <Button fx:id="createAlertButton" text="Create Alert" onAction="#createAlert"/>
+        <Button text="Return to Main Screen" onAction="#returnToMainScreen"/>
+    </HBox>
 </VBox>

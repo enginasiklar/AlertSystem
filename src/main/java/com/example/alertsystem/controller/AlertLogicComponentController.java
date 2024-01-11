@@ -10,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,14 +22,24 @@ public class AlertLogicComponentController {
     @FXML
     private HBox hboxLogicContainer;
     private HBox movingComponent = null;
-    private final Map<String, Condition> ruleMap = new HashMap<>();
+    private final Map<String, Condition> ruleMap;
     private List<HBox> componentOrder;
 
     public AlertLogicComponentController() {
         this.componentOrder = SharedResource.getComponentOrder();
+        this.ruleMap = SharedResource.getRuleMap();
         ruleMap.put("Rule 1", new Condition(true, 1));
         ruleMap.put("Rule 2", new Condition(false, 2));
         ruleMap.put("Rule 3", new Condition(true, 3));
+    }
+
+    public void addRule(String ruleName, boolean ruleValue) {
+        ruleMap.put(ruleName, new Condition(ruleValue, ruleMap.size() + 1));
+    }
+
+
+    public Map<String, Condition> getRuleMap() {
+        return ruleMap;
     }
 
     // Method to set componentOrder
@@ -106,11 +117,11 @@ public class AlertLogicComponentController {
     private void addParenthesis(String parenthesis) {
         Button parenthesisButton = new Button(parenthesis);
         parenthesisButton.setOnAction(e -> showOptionsContextMenu(parenthesisButton));
-
+        /*
         HBox container = new HBox();
         container.getChildren().add(parenthesisButton);
         componentOrder.add(container);
-        updateHBox();
+        updateHBox();*/
     }
 
     private void showOptionsContextMenu(Node component) {
@@ -147,10 +158,22 @@ public class AlertLogicComponentController {
 
     private ComboBox<String> createRuleComboBox() {
         ComboBox<String> ruleComboBox = new ComboBox<>();
-        ruleComboBox.setItems(FXCollections.observableArrayList("Rule 1", "Rule 2", "Rule 3"));
-        ruleComboBox.setValue("Rule 1");
+
+        // Get the rule names from the ruleMap
+        List<String> ruleNames = new ArrayList<>(ruleMap.keySet());
+
+        ruleComboBox.setItems(FXCollections.observableArrayList(ruleNames));
+
+        // Set the default value to the first rule (if available)
+        if (!ruleNames.isEmpty()) {
+            ruleComboBox.setValue(ruleNames.get(0));
+        }
+
         return ruleComboBox;
     }
+
+
+
 
     private ComboBox<String> createOperatorComboBox() {
         ComboBox<String> operatorComboBox = new ComboBox<>();
