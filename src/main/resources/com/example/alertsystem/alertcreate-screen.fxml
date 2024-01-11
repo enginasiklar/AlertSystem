@@ -28,7 +28,7 @@
                 </FXCollections>
             </items>
         </ComboBox>
-        <ComboBox fx:id="comboBoxSymbols" value="$AAPL">
+        <ComboBox fx:id="comboBoxSymbols" value="BTC">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <String fx:value="BTC"/>
