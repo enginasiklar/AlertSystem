@@ -1,6 +1,4 @@
 package com.example.alertsystem.controller;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,15 +7,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.Objects;
 
 public class AlertCreateController {
 
-    // UI components connected via fx:id
     @FXML
     private ComboBox<String> comboBoxCriteria;
     @FXML
@@ -37,12 +32,16 @@ public class AlertCreateController {
     @FXML
     private ComboBox<String> comboBoxChannel;
 
+    private AlertLogicComponentController alertLogicComponentController;
+
+    public void setAlertLogicComponentController(AlertLogicComponentController controller) {
+        this.alertLogicComponentController = controller;
+    }
     // Additional fields to track the rules and logic
     private final StringBuilder ruleBuilder = new StringBuilder();
 
     @FXML
     private void initialize() {
-        // ... existing initialization ...
 
         // Hide or show the comboBoxSymbols based on comboBoxCriteria selection
         comboBoxCriteria.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -75,13 +74,16 @@ public class AlertCreateController {
 
     @FXML
     private void createAlert(ActionEvent event) {
-        // When creating the alert, use the ruleBuilder's content to define the logic
-        System.out.println("Creating alert with logic: " + ruleBuilder.toString());
-        // Here you would pass the logic to the backend system
+        String booleanExpression = alertLogicComponentController.buildBooleanExpression();
+
+        // Obtain the boolean expression from the AlertLogicComponentController
+        System.out.println("The booleanExpression is: " + booleanExpression);
+        // Evaluate the boolean expression
+        //Boolean result = MVEL.eval(booleanExpression, Boolean.class);
+        Boolean result = true;
+        System.out.println("The result of the alert logic is: " + result);
     }
 
-    // Other methods for handling actions like creating or viewing alerts, lists, and channels
-    // Depending on your requirements, you would add those here
     @FXML
     private void returnToMainScreen(ActionEvent event) {
         try {

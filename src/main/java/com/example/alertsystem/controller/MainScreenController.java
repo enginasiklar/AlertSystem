@@ -1,29 +1,35 @@
 package com.example.alertsystem.controller;
 
+import com.example.alertsystem.model.SharedResource;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MainScreenController {
 
-    // These methods will be called when the create buttons are clicked
     @FXML
     private void createAlert(ActionEvent event) {
         try {
-            Parent alertCreationScreen = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/alertsystem/alertcreate-screen.fxml")));
+            SharedResource.getComponentOrder().clear();
+            FXMLLoader alertCreationLoader = new FXMLLoader(getClass().getResource("/com/example/alertsystem/alertcreate-screen.fxml"));
+            Parent alertCreationScreen = alertCreationLoader.load();
+
+            AlertCreateController alertCreateController = alertCreationLoader.getController();
+            AlertLogicComponentController alertLogicComponentController = new AlertLogicComponentController();
+            alertCreateController.setAlertLogicComponentController(alertLogicComponentController);
+
             Scene alertCreationScene = new Scene(alertCreationScreen);
-
-            // Cast the source of the event to Node and get the stage
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Set the scene for the stage and show it
             currentStage.setScene(alertCreationScene);
             currentStage.show();
         } catch (IOException e) {

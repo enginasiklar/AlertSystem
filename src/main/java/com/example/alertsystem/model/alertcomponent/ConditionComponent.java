@@ -11,8 +11,8 @@ public class ConditionComponent implements AlertComponent {
 
     @Override
     public String display() {
-        // Display the condition as "Condition[id]"
-        return "Condition[" + condition.id + "]";
+        // Display the condition's boolean value as a string ("1" or "0")
+        return condition.isActive() ? "1" : "0";
     }
 
     public Condition getCondition() {
